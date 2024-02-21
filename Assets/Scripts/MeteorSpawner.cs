@@ -58,10 +58,10 @@ public class MeteorSpawner : MonoBehaviour
     {
         isSpawning = false;
     }
-    public void lose()
+    /*public void lose()
     {
         Lose.SetActive(true);
         Destroy(gameObject);
-    }
+    }*/
 
 }
