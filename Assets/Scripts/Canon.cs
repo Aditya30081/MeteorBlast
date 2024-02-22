@@ -72,7 +72,7 @@ public class Cannon : MonoBehaviour
         //velocityX = rb.GetPointVelocity(rb.position).x;
         if (Mathf.Abs(velocityX) > 0.0f && Mathf.Abs(rb.position.x) < screenBounds)
         {
-            motor.motorSpeed = velocityX * 150f;
+            motor.motorSpeed = velocityX * 1000f;
             MotorActivate(true);
         }
         else

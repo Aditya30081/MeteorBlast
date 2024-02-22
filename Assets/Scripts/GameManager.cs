@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -12,48 +14,21 @@ public class GameManager : MonoBehaviour
 
    public Text scoreText;
 
-    /*void Awake()
-    {
-        *//*if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Debug.LogWarning("Multiple instances of GameManager found!");
-            Destroy(gameObject);
-        }*//*
-    }*/
 
     void Start()
     {
-        /*Score = 0;
-        UpdateScoreText();*/
+       //Score = 0;
     }
 
-    /*public void IncrementScore(int increment)
-    {
-        Score += increment;
-        print("score:"+Score.ToString());
-        UpdateScoreText();
-    }*/
-
-    /*void UpdateScoreText()
-    {
-        if (scoreText != null)
-        {
-            print(Score.ToString());
-            scoreText.text = "Score: " + Score.ToString();
-            
-        }
-        else
-        {
-            Debug.LogWarning("Score text reference is not set!");
-        }
-    }*/
+  
 
     private void Update()
     {
         scoreText.text = "Score : " + Score.ToString();
+        /*if(Score >= 20)
+        {
+            //Score = 0;
+            SceneManager.LoadScene("LevelTwo");
+        }*/
     }
 }

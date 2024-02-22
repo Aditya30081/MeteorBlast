@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class Meteor : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class Meteor : MonoBehaviour
     public static event Action OnGameOver;
     public static event Action<int> OnScoreUpdated;
 
+    public static event Action OnLevelCleared;
+    private LevelCleared levelCleared;
+
 
     /* private void OnDisable()
      {
@@ -37,6 +42,8 @@ public class Meteor : MonoBehaviour
     {
         EnableMeteorMovement();
         UpdateHealthUI();
+
+        //levelCleared = GameObject.Find("LevelCleared").GetComponent<LevelCleared>();
 
         isShowing = true;
         rb.gravityScale = 0f;
@@ -129,7 +136,49 @@ public class Meteor : MonoBehaviour
         if (health > 1)
         {
             health -= damage;
-            UpdateScore(1);
+            Scene currentScene = SceneManager.GetActiveScene();
+
+
+            if (currentScene.name == "SampleScene")
+            {
+
+
+                if (GameManager.Score == 5)
+                {
+
+
+                    print("level cleared");
+                    OnLevelCleared?.Invoke();
+                }
+                else
+                {
+
+                    UpdateScore(1);
+                }
+
+
+
+            }
+            else if (currentScene.name == "LevelTwo") {
+                print(GameManager.Score.ToString());
+                if (GameManager.Score == 10)
+                {
+
+                    Time.timeScale = 0;
+                }
+                else {
+                    
+                    UpdateScore(1);
+
+                }
+
+            }
+                    
+                   
+                    
+            
+            
+            
         }
         else
         {
